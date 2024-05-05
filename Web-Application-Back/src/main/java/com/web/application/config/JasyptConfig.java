@@ -14,7 +14,7 @@ public class JasyptConfig {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
 
-        config.setPassword("GoodCenWorkforceManagement");
+        config.setPassword("myapp");
         config.setPoolSize(1);
 
         encryptor.setConfig(config);
