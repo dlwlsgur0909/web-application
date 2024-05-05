@@ -8,30 +8,30 @@ const axios = inject('axios');
 const router = useRouter()
 const auth = useAuthStore()
 
-const phoneNumber = ref('01011111111');
-const password = ref('testPassword123');
+const username = ref('');
+const password = ref('');
 
-const loginClicked = () => {
+const login = () => {
     const requestBody = {
-        userMobileNumber: phoneNumber.value,
-        userPassword: password.value,
+        username: username.value,
+        password: password.value,
     };
 
-    auth.login(requestBody, () => { router.push('/'); test() }, () => {});
+    auth.login(
+        requestBody, 
+        () => { 
+            router.push('/');
+        }, 
+        () => {}
+    );
 }
 
-function test() {
-    const requestBody = {
-        currentPassword: 'testPassword123',
-        newPassword: 'testPassword1234'
-    }
-    axios.patch('v1/mobile/wfm/users/password', requestBody)
-    .then((res) => {
-        console.log(res);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+const joinPage = () => {
+    console.log('회원가입 클릭!');
+}
+
+const findPassword = () => {
+    console.log('비밀번호 찾기 클릭');
 }
 
 </script>
@@ -39,17 +39,17 @@ function test() {
     <div>
         <h1>로그인</h1>
         <div>
-            <label for="phoneNumber">핸드폰번호 : </label>
-            <input type="text" name="phoneNumber" v-model="phoneNumber"/>
+            <label for="username">아이디 : </label>
+            <input type="text" name="username" v-model="username"/>
         </div>
         <div>
             <label for="password">비밀번호 : </label>
             <input type="text" name="password" v-model="password"/>
         </div>
-        <button @click="loginClicked()">로그인</button>
-        <button @click="">사용등록</button>
+        <button @click="login()">로그인</button>
+        <button @click="joinPage()">회원가입</button>
         <div>
-            <a @click="">forgot your password?</a>
+            <a @click="findPassword()">비밀번호 찾기</a>
         </div>
     </div>
 </template>
