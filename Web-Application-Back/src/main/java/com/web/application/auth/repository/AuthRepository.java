@@ -1,12 +1,14 @@
 package com.web.application.auth.repository;
 
-import com.web.application.user.entity.User;
+import com.web.application.member.entity.Member;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.Optional;
 
-public interface AuthRepository extends ListCrudRepository<User, Long> {
-    Optional<User> findByUserMobileNumber(String userMobileNumber);
+public interface AuthRepository extends ListCrudRepository<Member, Long> {
+    Boolean existsByUsername(String username);
+    Boolean existsByNickname(String nickname);
 
-    Boolean existsByEmployeeNumberOrUserMobileNumber(Long employeeNumber, String userMobileNumber);
+
+    Optional<Member> findByUsername(String username);
 }

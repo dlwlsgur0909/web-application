@@ -35,9 +35,7 @@ public class SecurityConfig {
                 .sessionManagement((sessionManagement) -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((authorizeHttpRequest) ->
                         authorizeHttpRequest
-                                .requestMatchers("/v1/mobile/wfm/auth/**").permitAll()
-                                .requestMatchers("/v1/mobile/wfm/erp/**").hasAuthority("ERP")
-                                .requestMatchers("/v1/mobile/wfm/users/**").hasAuthority("USER")
+                                .requestMatchers("/api/v1/auth/**").permitAll()
                                 .requestMatchers("/error").permitAll()
                                 .anyRequest().authenticated()
                 )

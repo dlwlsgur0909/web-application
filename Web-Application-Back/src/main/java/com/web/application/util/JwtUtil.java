@@ -21,13 +21,10 @@ public class JwtUtil {
     private final SecretKey secretKey;
     private final ObjectMapper objectMapper;
 
-    @Value("${app.jwt.erp.expiration}")
-    private Long erpExpiration;
-
-    @Value("${app.jwt.token.access.expiration}")
+    @Value("${app.jwt.access.expiration}")
     private Long accessExpiration;
 
-    @Value("${app.jwt.token.refresh.expiration}")
+    @Value("${app.jwt.refresh.expiration}")
     private Long refreshExpiration;
 
     public JwtUtil(@Value("${app.jwt.secret}") String secret, ObjectMapper objectMapper) {
@@ -45,21 +42,6 @@ public class JwtUtil {
     // Refresh 토큰 발급
     public String createRefreshToken(TokenInfo token) {
         Long expiration = refreshExpiration * 60 * 1000L;
-
-        return createToken(token, expiration);
-    }
-
-    // ERP용 토큰 발급
-    public String createERPToken() {
-
-        Long expiration = erpExpiration * 60 * 1000L; // 1년
-
-        TokenInfo token = TokenInfo.builder()
-                .userSeq(999999L)
-                .employeeNumber(999999L)
-                .currentRegisterCode("ERP")
-                .role("ERP")
-                .build();
 
         return createToken(token, expiration);
     }

@@ -1,7 +1,10 @@
 package com.web.application.auth.dto.response;
 
-import com.web.application.user.entity.User;
-import lombok.*;
+import com.web.application.member.entity.Member;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
@@ -9,15 +12,12 @@ import lombok.*;
 @Builder
 public class TokenInfo {
 
-    private Long userSeq;
-    private Long employeeNumber;
-    private String currentRegisterCode;
-    private String role;
+    private String username;
+    private String nickname;
 
-    public TokenInfo(User user) {
-        this.userSeq = user.getUserSeq();
-        this.employeeNumber = user.getEmployeeNumber();
-        this.currentRegisterCode = user.getCurrentRegisterCode();
-        this.role = "USER";
+    public TokenInfo(Member entity) {
+        this.username = entity.getUsername();
+        this.nickname = entity.getNickname();
     }
+
 }
