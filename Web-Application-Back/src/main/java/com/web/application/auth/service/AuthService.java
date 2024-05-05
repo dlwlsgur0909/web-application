@@ -66,7 +66,7 @@ public class AuthService {
         return LoginResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
-                .username(tokenInfo.getUsername())
+                .nickname(tokenInfo.getNickname())
                 .build();
     }
 
