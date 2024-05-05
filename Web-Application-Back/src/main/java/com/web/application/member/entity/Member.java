@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 public class Member {
 
+    @Id
     private Long memberId;
     private String username;
     private String password;
@@ -24,4 +25,13 @@ public class Member {
     private LocalDateTime modifiedAt;
     private Long modifiedBy;
 
+
+    public void changePassword(String newPassword) {
+        this.password = newPassword;
+    }
+
+    public void setAuditor() {
+        this.createdBy = memberId;
+        this.modifiedBy = memberId;
+    }
 }
