@@ -10,7 +10,7 @@ export const useAuthStore = defineStore({
   }),
   actions: {
     login(data, onSuccess, onError) {
-      axios.post('/v1/mobile/wfm/auth/login', data)
+      axios.post('/api/v1/auth/login', data)
       .then((res) => {
         this.setUser(res.data);
         onSuccess();
@@ -26,7 +26,7 @@ export const useAuthStore = defineStore({
     },
 
     setUser(user) {
-      if(user != null){
+      if(user !== null){
         this.user = user;
         localStorage.setItem('user', JSON.stringify(user));
         this.isLogin = true;

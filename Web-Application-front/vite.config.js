@@ -16,7 +16,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/v1/mobile": "http://localhost:8090",
+      "/api/v1": "http://localhost:8080",
     }
   }
 })

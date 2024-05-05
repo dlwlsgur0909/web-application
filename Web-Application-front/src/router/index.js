@@ -40,14 +40,10 @@ export default router
 
 router.beforeEach(async (to) => {
   const auth = useAuthStore();
-  const loginPage = ['/login'];
-  const toPathIsLoginPage = loginPage.includes(to.path);
-
-  if(toPathIsLoginPage ^ !auth.user) {
-    if(!auth.user){
+  if(auth.user === null) {
+    if(to.path !== '/login') {
       return '/login';
-    } else {
-      return '/';
     }
   }
+
 })
