@@ -11,7 +11,7 @@ const auth = useAuthStore();
 <template>
   <main>
     <h1>
-      안녕😍 {{ auth.user.username }} 
+      안녕😍 {{ auth.user.nickname }} 
     </h1>
     <img src="../assets/subin.jpg" alt="" width="300px" height="300px">
   </main>
