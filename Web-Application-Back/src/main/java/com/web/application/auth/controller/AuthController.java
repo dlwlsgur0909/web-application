@@ -1,6 +1,7 @@
 package com.web.application.auth.controller;
 
 import com.web.application.auth.dto.request.JoinRequest;
+import com.web.application.auth.dto.request.LoginRequest;
 import com.web.application.auth.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,14 @@ public class AuthController {
         return ResponseEntity
                 .ok()
                 .build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody @Valid LoginRequest request) {
+
+        return ResponseEntity
+                .ok()
+                .body(authService.login(request));
     }
 
 }
