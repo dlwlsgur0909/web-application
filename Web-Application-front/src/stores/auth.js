@@ -20,9 +20,9 @@ export const useAuthStore = defineStore({
       })
     },
 
-    logout(data, onSuccess, onError) {
-      this.setUser(null);
-      onSuccess();
+    logout() {
+      localStorage.removeItem('user');
+      this.user = null;
     },
 
     setUser(user) {

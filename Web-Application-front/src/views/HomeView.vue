@@ -1,9 +1,16 @@
 <script setup>
 
 import { useAuthStore } from '@/stores/auth';
+import { useRouter } from 'vue-router'
 
 const auth = useAuthStore();
+const router = useRouter()
 
+
+const logout = () => {
+  auth.logout();
+  router.push('/login');  
+}
 
 
 </script>
@@ -13,6 +20,6 @@ const auth = useAuthStore();
     <h1>
       안녕😍 {{ auth.user.nickname }} 
     </h1>
-    <img src="../assets/subin.jpg" alt="" width="300px" height="300px">
+    <button @click="logout()">로그아웃</button>
   </main>
 </template>
